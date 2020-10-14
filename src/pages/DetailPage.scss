@@ -1,0 +1,14 @@
+.detail-page {
+  margin: 10px 0 0 0;
+  display: flex;
+  .left {
+    width: 250px;
+    padding: 0 20 0 0;
+  }
+  .right {
+    flex: auto;
+    .GIF-item {
+      width: 100%;
+    }
+  }
+}

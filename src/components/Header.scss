@@ -1,0 +1,35 @@
+#header {
+  height: 50px;
+  background-color: black;
+  padding-top: 20px;
+}
+#searchbox {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  #search-input {
+    flex: auto;
+    border-radius: 0;
+    height: 50px;
+    border: 0;
+    padding: 0 10px;
+    font-size: 1.2em;
+    outline: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    height: 50px;
+    width: 80px;
+    margin: 0;
+    border: 0;
+    background: hotpink;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+}

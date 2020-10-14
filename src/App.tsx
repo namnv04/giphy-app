@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import TrendingPage from './pages/TrendingPage';
+import DetailPage from './pages/DetailPage';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <TrendingPage />
+            </Route>
+            <Route exact path="/details">
+              <DetailPage />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+      <hr />
+      <ul>
+        <li>
+          <Link to="/">Trending Page</Link>
+        </li>
+        <li>
+          <Link to="/details">Detail Page</Link>
+        </li>
+      </ul>
+    </Router>
   );
 }
 
