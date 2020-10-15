@@ -1,44 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Giphy app take home assignment
 
-## Available Scripts
+This app was created using `create-react-app` with `react-route-dom`, Redux and lodash.debounce for infinite scroll feature.
 
-In the project directory, you can run:
+On the onload event of the Homepage, an action is triggered to make a request to Giphy API to get the first 10 trending GIFs. Scrolling down to the bottom will trigger the action to fetch the next 10 trending GIFs and so on.
 
-### `npm start`
+There is a Search box on top that used to search for GIFs using Giphy API. Enter the search term and click the button will trigger an action to fetch 10 items based on the search term. The results will be displayed on the page. Scroll down to the bottom will trigger action to fetch the next 10 items based on the search term and so on.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Whenever a network request is pending, there is a loading indicator at the bottom of the page showing the request is in progresss. This may be hard to see when internet is fast.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Improvments
 
-### `npm test`
+In the store/actions.tsx files. The `handleSearch` and `loadMore` action has many code the can be shared and thus avoid code duplication.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Another thing to point out is the Redux store is keeping the result for trending GIFs and searching GIFs as one data point in the store (`state.GIF.items`). These two lists could be kept separately in the store so that when users switch from search results page to the home page, the homepage can display GIFs already in Redux store and not having to make network requests to get trending GIFs again.
 
-### `npm run build`
+## Remaining Work
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Auto complete or search suggestion feature.
+2. Optimize to trigger loadmore action a bit ealier before reaching end of page
+3. Responsive grid for better GIF layout
+4. Make the query params for pagination configurable
+5. Some gif has duplicated IDs causes error
+6. Reset search to show trending results
+7. Handle error response cases
+8. Optimize loading spinner
