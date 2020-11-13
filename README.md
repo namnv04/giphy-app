@@ -1,4 +1,4 @@
-## Giphy app take home assignment
+## Giphy app
 
 This app was created using `create-react-app` with `react-route-dom`, Redux and lodash.debounce for infinite scroll feature.
 
